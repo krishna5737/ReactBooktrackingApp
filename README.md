@@ -28,7 +28,8 @@ Once loaded you may choose which shelf to send a book to by clicking on the gree
 To access the search page select the plus icon located at the bottom right of the page. Type in the search field for possible books to be found. No results will be displayed if the input field is blank or the query you've typed does not exist.
 
 ## Screenshots
+### Home Page   
+![Home Page](/src/Screenshots/HomePage.png)
 
-![](/src/Screenshots/HomePage.png)
-
-![](/src/Screenshots/SearchPage.png)
+### Search Page
+![Search Page](/src/Screenshots/SearchPage.png)

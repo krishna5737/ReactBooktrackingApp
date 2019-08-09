@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Search from './BooksRelatedComponent/Search';
 import Shelf from './BooksRelatedComponent/Shelf';
@@ -29,57 +29,58 @@ class BooksApp extends Component {
 
 		return (
 			<div className="app">
-				<Route
-					exact
-					path="/"
-					render={() => (
-						<div>
-							<div className="books-header">
-								<h1>My Book Place</h1>
-							</div>
-							<div className="books-content">
-								<div>
-									<Shelf
-										title="Currently Reading"
-										books={Reading}
-										bookShelfChangeStatus={(book, newShelf) =>
-											this.onBookUpdate(book, newShelf)
-										}
-									/>
-									<Shelf
-										title="Want to Read"
-										books={wantToRead}
-										bookShelfChangeStatus={(book, newShelf) =>
-											this.onBookUpdate(book, newShelf)
-										}
-									/>
-									<Shelf
-										title="Read"
-										books={read}
-										bookShelfChangeStatus={(book, newShelf) =>
-											this.onBookUpdate(book, newShelf)
-										}
-									/>
+				<Switch>
+					<Route
+						exact
+						path="/"
+						render={() => (
+							<div>
+								<div className="books-header">
+									<h1>My Book Place</h1>
+								</div>
+								<div className="books-content">
+									<div>
+										<Shelf
+											title="Currently Reading"
+											books={Reading}
+											bookShelfChangeStatus={(book, newShelf) =>
+												this.onBookUpdate(book, newShelf)
+											}
+										/>
+										<Shelf
+											title="Want to Read"
+											books={wantToRead}
+											bookShelfChangeStatus={(book, newShelf) =>
+												this.onBookUpdate(book, newShelf)
+											}
+										/>
+										<Shelf
+											title="Read"
+											books={read}
+											bookShelfChangeStatus={(book, newShelf) =>
+												this.onBookUpdate(book, newShelf)
+											}
+										/>
+									</div>
+								</div>
+								<div className="open-search">
+									<Link to="/search">Add a book</Link>
 								</div>
 							</div>
-							<div className="open-search">
-								<Link to="/search">Add a book</Link>
-							</div>
-						</div>
-					)}
-				/>
-
-				<Route
-					path="/search"
-					render={() => (
-						<Search
-							booksOnShelf={books}
-							bookShelfChangeStatus={(book, newShelf) =>
-								this.onBookUpdate(book, newShelf)
-							}
-						/>
-					)}
-				/>
+						)}
+					/>
+					<Route
+						path="/search"
+						render={() => (
+							<Search
+								booksOnShelf={books}
+								bookShelfChangeStatus={(book, newShelf) =>
+									this.onBookUpdate(book, newShelf)
+								}
+							/>
+						)}
+					/>
+				</Switch>
 			</div>
 		);
 	}
